@@ -1,5 +1,6 @@
 # DEGs for Paramita
 library(edgeR)
+library(dplyr)
 
 #read in the data
 paramita <- read.csv("~/Downloads/paramita.rnaseq.csv",header=TRUE,sep=",",stringsAsFactors=FALSE,check.names=FALSE)
