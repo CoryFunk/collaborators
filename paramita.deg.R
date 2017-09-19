@@ -57,15 +57,15 @@ one_three$table <- one_three$table[,c(5,6,1,2,3,4)]
 # identify the genes that are above a fold change and FDR
 one_four$table$threshold = as.factor(abs(one_four$table$logFC) > 2 & one_four$table$FDR < 0.05)
 four_five$table$threshold = as.factor(abs(four_five$table$logFC) > 2 & four_five$table$FDR < 0.01)
-one_three$table$threshold = as.factor(abs(one_three$table$logFC) > 2 & one_three$table$FDR < 0.05)
+one_three$table$threshold = as.factor(abs(one_three$table$logFC) > 1.8 & one_three$table$FDR < 0.05)
 
 DEG_1vs4 <- head(arrange(one_four$table, desc(threshold), FDR), 200)
 write.table(DEG_1vs4, file = "~/Downloads/DEG_1vs4.txt", sep = '\t', quote=FALSE, row.names=FALSE)
 
-DEG_4vs5 <- head(arrange(four_five$table, desc(threshold), FDR), 1000)
+DEG_4vs5 <- arrange(four_five$table, desc(threshold), FDR) %>% filter(threshold == "TRUE")
 write.table(DEG_4vs5, file = "~/Downloads/DEG_4vs5.txt", sep = '\t', quote=FALSE, row.names=FALSE)
 
-DEG_1vs3 <- head(arrange(one_three$table, desc(threshold), FDR), 200)
+DEG_1vs3 <- arrange(one_three$table, desc(threshold), FDR) %>% filter(threshold == "TRUE")
 write.table(DEG_1vs3, file = "~/Downloads/DEG_1vs3.txt", sep = '\t', quote=FALSE, row.names=FALSE)
 
 
