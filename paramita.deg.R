@@ -3,7 +3,7 @@ library(edgeR)
 library(dplyr)
 
 #read in the data
-paramita <- read.csv("~/Downloads/paramita.rnaseq.csv",header=TRUE,sep=",",stringsAsFactors=FALSE,check.names=FALSE)
+paramita <- read.csv("~/Downloads/paramita/paramita.rnaseq.csv",header=TRUE,sep=",",stringsAsFactors=FALSE,check.names=FALSE)
 
 # subsone_four the data to gone_four just the counts
 rownames(paramita) <- paramita[,1]
